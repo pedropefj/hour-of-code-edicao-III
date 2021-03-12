@@ -13,20 +13,20 @@ const Chat = () => {
         return <ChatItem user = {item} />
     };
 
-    // const filteredChats = chatData.filter((chat) => 
-    //     chat.userName.toUpperCase().includes(searchText.toUpperCase())
-    // );
+    const filteredChats = chatData.filter((chat) => 
+        chat.userName.toUpperCase().includes(searchText.toUpperCase())
+    );
 
     return (
         <div className={classes.container}>
             <header className={classes.header}>Chat</header>
             <div className={classes.content}>
                 <GenericList
-                    items = {chatData}
+                    items = {filteredChats}
                     renderItem = {(item) => renderChatItem(item)}
                     uniqKey="id"
-                    // searchText={searchText}
-                    // onSearch={(text) => setSearchText(text)}
+                    searchText={searchText}
+                    onSearch={(text) => setSearchText(text)}
                 />
             </div>
         </div>

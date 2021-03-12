@@ -6,3 +6,4 @@ export { default as ChatItem } from './ChatItem';
 export { default as ListItemTextContent } from './ListItemTextContent';
 export { default as Contacts } from './Contacts';
 export { default as Feed } from './Feed';
+export { default as SearchInput } from './SearchInput';
