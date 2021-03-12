@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { FancyBoarder, SplitPane, Chat, Contacts, Feed} from './aulaIV';
+import { AulaVHooks } from './aulaV'
 function App() {
   const [isActive, setActive] = useState(false);
 
@@ -14,9 +14,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="content">
-          <SplitPane leftContent={<Chat/>} rightContent={<Contacts/>}>
-            <Feed/>
-          </SplitPane>
+          <AulaVHooks/>
         </div>
       </header>
     </div>
