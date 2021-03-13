@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { AulaVHooks } from './aulaV'
-import { Boards } from './MVPTrello';
+import { Boards, BoardDetails } from './MVPTrello';
 import { DefaultPage, Header } from './shared/components';
 import themes from './shared/theme';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export const ThemeContext = React.createContext(themes.light);
 
 function App() {
 
-  // const [darkMode, setDarkMode] = useState(false);
-
-  // const handleSwitchDarkMode = () => {
-  //   setDarkMode((darkMode) => !darkMode);
-  // };
-
-
-
   return (
     <div className="App">
       <header className="App-header">
-        <div className="root">
-          <Header>MPV Trello</Header>
-          <Boards/>
-        </div>
+        <Router>
+          <Header />
+          <div className="root">
+            <Switch>
+              <Route path="/" exact>
+                <Boards />
+              </Route>
+              <Route path="/board/:id">
+                <BoardDetails />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
       </header>
     </div>
   );

@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { AppBar, Toolbar, Typography} from '@material-ui/core';
- 
+import { Link } from 'react-router-dom';
+
 const Header = (props) => {
     const {} = props;
     const classes = useStyles(props);
@@ -13,9 +14,18 @@ const Header = (props) => {
         <div className={classes.root}>
             <AppBar position="static" className={classes.header}>
                 <Toolbar>
+                <Link
+                    to={{
+                    pathname: '/',
+                    state: {
+                        foo: 'text',
+                    },
+                    }}
+                >
                     <Typography variant='h6' className={classes.title}>
                         Header
                     </Typography>
+                </Link>
                 </Toolbar>
             </AppBar>
         </div>
