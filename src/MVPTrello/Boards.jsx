@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { DefaultPage, FormModal } from '../shared/components';
 import { Button } from '@material-ui/core';
+import { useLocation, useHistory } from 'react-router-dom';
 import AddIcon from '@material-ui/icons/Add'
 import BoardCard from './BoardCard';
 import BoardForm from './BoardForm';
@@ -14,18 +15,12 @@ const Boards = (props) => {
     const {} = props;
     const classes = useStyles(props);
 
-    const location = useLocation();
-    const history = useHistory();
-  
-    console.log('location :>> ', location);
-    console.log('history :>> ', history);
-
     const renderButton = () =>{
         return(
             <Button 
                 onClick={() => setShowFormBoard(true)}
                 variant="contained"
-                color="default"
+                color="secondary"
                 endIcon={<AddIcon/>}
             >
                 ADD BOARD        

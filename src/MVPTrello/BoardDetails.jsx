@@ -1,18 +1,48 @@
-import React from 'react';
+import React, {useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { useLocation, useHistory } from 'react-router-dom';
+import DefaultPage from '../shared/components/DefaultPage';
+import {DragDropContext} from 'react-beautiful-dnd';
+import BoardLane from './BoardLane';
+import { lanesMock } from '../shared/mocks/lanes.mock';
+import TaskCard from './TaskCard';
+import { onDragEnd } from './util';
+
 const BoardDetails = (props) => {
   const {} = props;
   const classes = useStyles(props);
 
-  const location = useLocation();
-  const history = useHistory();
+  const [lanes, setLanes] = useState(lanesMock);
 
-  console.log('location :>> ', location);
-  console.log('history :>> ', history);
+  const renderTask = (task, index) => {
+    return <TaskCard task={task} index={index} />;
+  };
 
-  return <div className={classes.container}>BoardDetails</div>;
+  const renderLanes = () => {
+
+    return Object.entries(lanes).map(([laneId, lane]) => {
+      return (
+
+          <BoardLane 
+            key={laneId} 
+            laneId={laneId} 
+            lane={lane}
+            laneTitle="Title"
+            renderTask={renderTask}
+          />
+      );
+    });
+  };
+
+  return(
+    <DefaultPage title="Board details">
+      <DragDropContext onDragEnd={(result) => onDragEnd(result, lanes, setLanes)}>
+        <div className={classes.container}>
+          {renderLanes()}
+        </div>
+      </DragDropContext>
+    </DefaultPage>
+  );
 };
 
 BoardDetails.propTypes = {};

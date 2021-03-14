@@ -19,7 +19,7 @@ const FormModal = (props) => {
                 <Button onClick={handleCancel} color="default">
                 Cancel
                 </Button>
-                <Button onClick={handleSave} color="primary">
+                <Button onClick={handleSave} color="secondary" variant="contained">
                 Save
                 </Button>
             </DialogActions>
